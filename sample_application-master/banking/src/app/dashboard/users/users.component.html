@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <br />
+    <h2 class="text-align-center">Bank Users </h2>
+    <br />
+    <table class="table table-striped">
+        <thead>
+            <th>UserId</th>
+            <th>Name</th>
+            <th>address</th>
+            <th>email</th>
+            <th>creationDate</th>
+            <th>Details</th>
+        </thead>
+
+        <tbody *ngFor="let user of allUsers; let i = index">
+            <tr>
+                <td>{{user.userId}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.creationDate}}</td>
+                <td><a class="cursor-pointer" (click)="getDetails(user, i);" style="color: blue;">View More Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br /><br />
+    <div *ngIf="userObtained">
+        <div class="mb-3">
+            <h2>User Information of {{individualUser?.name}}</h2>
+        </div>
+        <div class="col-12 custom-border">
+            <table class="table table-striped" id="userObtained">
+                <thead>
+                    <th>UserId</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Account Details</th>
+                    <th>Action</th>
+                </thead>
+
+                <tbody>
+                    <td>
+                        <div class="userId">
+                            <div *ngIf="formEditable"><input type="text" [(ngModel)]="individualUser.userId"
+                                    class="form-control" readonly/></div>
+                            <div *ngIf="!formEditable"><span>{{individualUser?.userId}}</span>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="name">
+                            <div *ngIf="formEditable"><input type="text" [(ngModel)]="individualUser.name"
+                                    class="form-control" /></div>
+                            <div *ngIf="!formEditable"><span>{{individualUser?.name}}</span></div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="address">
+                            <div *ngIf="formEditable"><input type="text" [(ngModel)]="individualUser.address"
+                                    class="form-control" /></div>
+                            <div *ngIf="!formEditable"><span>{{individualUser?.address}}</span>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="email">
+                            <div *ngIf="formEditable"><input type="text" [(ngModel)]="individualUser.email"
+                                    class="form-control" /></div>
+                            <div *ngIf="!formEditable"><span>{{individualUser?.email}}</span>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="savings">
+                            <div *ngFor="let account of individualUser.savings">
+                                <div>accountId: <span><b>{{account.accoundId}}</b></span></div>
+                                <div>accountType: <span><b>{{account.accountType}}</b></span></div>
+                                <div>balance: <span><b>{{account.balance}}</b></span></div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <button *ngIf="!formEditable" class="btn-success custom-button" (click)="updateUser();">Update</button>
+                        <button *ngIf="formEditable" class="btn-warning custom-button" (click)="cancelUpdate();">Cancel</button>
+                    </td>
+                </tbody>
+            </table>
+
+            <div *ngIf="formEditable">
+                <button class="btn-success custom-button" (click)="modifyUser();">Modify User</button>
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+    <div *ngIf="loader" class="loading"></div>
+</div>

@@ -1,0 +1,13 @@
+<header>
+    <div class="header">
+        <div class="row" *ngIf="signOutEnable">
+            <div class="col-md-7 col-xs-12">
+                <h1 class="heading">Banking Sector</h1>
+            </div>
+
+            <div class="col-md-5 col-xs-12">
+                <a class="custom-logout" (click)="serviceLogout();">Log out</a>
+            </div>
+        </div>
+    </div>
+</header>

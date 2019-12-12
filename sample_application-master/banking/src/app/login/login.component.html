@@ -1,0 +1,34 @@
+<section>
+    <div id="login" class="pt-5">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" >
+                            <h3 class="text-center text-info-custom-custom">Login</h3>
+                            <div class="form-group position-relative">
+                                <label for="userId" class="text-info-custom">UserID:</label><br>
+                                <input type="text" name="userId" id="userId" [(ngModel)]="userId" class="form-control">
+                                
+                            </div>
+                            <div class="form-group position-relative">
+                                <label for="password" class="text-info-custom">Password:</label><br>
+                                <input type="password" name="password" id="password" [(ngModel)]="password" class="form-control">
+                                
+                            </div>
+
+                            <!-- Not worked on it, as we have no credentials of employees -->
+                            <div class="form-group position-relative alert alert-danger" *ngIf="invalidCredentials" #alerterror>
+                                <span>Invalid Credentials <i class="fa fa-thumbs-down"></i></span>
+                            </div>
+                            <div class="form-group pt-2">
+                                <input type="button" name="submit" class="btn btn-info btn-md btn-custom" value="Submit" [disabled]="!(userId && password)" (click)="onSubmit()">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="loader" class="loading"></div>
+</section>

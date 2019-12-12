@@ -1,0 +1,8 @@
+<div>
+  <div *ngIf="controlErrors" class="invalid-feedback validate error-tooltip-wrap"> <!-- validate error-tooltip-wrap -->
+    <div *ngIf="displayError?.required" class="error-tooltip">{{errorMsg?.required | translate}}</div> <!-- error-tooltip -->
+    <div *ngIf="displayError?.email" class="error-tooltip">{{errorMsg?.email | translate}}</div> <!-- error-tooltip -->
+    <div *ngIf="displayError?.minlength" class="error-tooltip">{{errorMsg?.minlength | translate}}</div> <!-- error-tooltip -->
+    <div *ngIf="displayError?.mustMatch" class="error-tooltip">{{errorMsg?.mustMatch | translate}}</div> <!-- error-tooltip -->
+  </div>
+</div>

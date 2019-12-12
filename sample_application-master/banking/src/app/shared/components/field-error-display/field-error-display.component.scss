@@ -1,0 +1,81 @@
+// Custom tooltip error
+  .validate {
+    position: relative;
+}
+
+.validate input {
+    border: 1px solid #fa0000;
+}
+
+.error-tooltip-wrap {
+    // opacity: 0;
+    // bottom: 65%;
+    top: -10%;
+    margin-bottom: -5px;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+    transform: translateZ(0);
+    &:before{
+        opacity: 1;
+    }
+    &:after{
+        opacity: 0;
+    }
+}
+
+.validate .error-tooltip {
+    background: #fa0000;
+
+    .hideContent{
+        display: block !important;
+    }
+}
+
+.error-tooltip-wrap .error-tooltip {
+    display: inline-block;
+    background: transparent;
+    padding: 5px 12px;
+    color: #fff;
+    border-radius: 3px;
+    bottom: 0;
+    margin-bottom: 11px;
+    transform: translate(0);
+    transform-origin: top;
+}
+
+.validate .error-tooltip {
+    background: #fa0000;
+    &:before{
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #fa0000 transparent transparent transparent;
+    }
+    &:after{
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #fa0000 transparent transparent transparent;
+    }
+}
+
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
